@@ -1,0 +1,9 @@
+<form method="GET" action="{% url 'list_abilities' %}">
+    <label for="empleado">Selecciona un empleado:</label>
+    <select name="empleado" id="empleado">
+      {% for empleado in empleados %}
+        <option value="{{ empleado.id }}">{{ empleado.first_name }} {{ empleado.last_name }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Mostrar Habilidades">
+</form>

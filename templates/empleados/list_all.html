@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block titulo %} Listar todos los empleados {% endblock titulo %}
+{% block content %}
+{% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell" style="font-size: 30px;">Todos los empleados registrados:</h1>
+            <form method="GET" class="cell grid-x grid-margin-x">{% csrf_token %}
+                <div class="cell large-7">
+                    <input type="text" id="kword" value="{{ request.GET.kword }}" name="kword" placeholder="Buscar empleado por nombre o apellido.">
+                </div>
+                <div class="cell large-2">
+                    <button type="submit" class="success button">Buscar</button>
+                </div>
+            </form>
+            <div class="grid-x grid-margin-x">
+                <table class="cell large-12 stack">
+                    <thead>
+                      <tr>
+                        <th width="100">ID</th>
+                        <th width="150">Nombre</th>
+                        <th width="150">Apellido</th>
+                        <th width="250">Cargo</th>
+                        <th width="250">Departamento</th>
+                        <th width="250">Habilidades</th>
+                        <th width="150">Accion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for empleado in object_list %}
+                            <tr>
+                                <td>{{ empleado.id }}</td>
+                                <td>{{ empleado.first_name }}</td>
+                                <td>{{ empleado.last_name }}</td>
+                                <td>{{ empleado.get_job_display }}</td>
+                                <td>{{ empleado.department.name }}</td>
+                                <td>
+                                    {% for ability in empleado.abilities.all%}
+                                        <li>{{ ability.ability }}</li>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a class="button warning" href="{% url 'empleados_app:empleado_detail' empleado.id %}">Ver mas...</a>
+                                </td>
+                            </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+            <div class="cell">
+                {% if is_paginated %}
+                    <nav aria-label="Pagination">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="pagination-previous">
+                                    <a href="?kword={{ request.GET.kword }}&page={{ page_obj.previous_page_number }}" aria-label="Pagina Anterior">
+                                        Anterior
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for page in paginator.page_range %}
+                                {% if page == page_obj.number %}
+                                    <li class="current"><span class="show-for-sr">Estás aqui</span>{{page}}</li>
+                                {% else %}  
+                                    <li><a href="?kword={{ request.GET.kword }}&page={{page}}" aria-label="Page {{ page }}">{{ page }}</a></li> 
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="pagination-next">
+                                    <a href="?kword={{ request.GET.kword }}&page={{ page_obj.next_page_number }}" aria-label="Pagina Siguiente">
+                                        Siguiente
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %} 
+

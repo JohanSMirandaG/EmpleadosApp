@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}{{ empleado.first_name }} {{ empleado.last_name }}{% endblock titulo %}
+{% block content %}
+{% include 'includes/header.html' %}
+    <div class="grid-container align-center">
+        <div class="grid-x">
+            <div class="cell" style="text-align: center;">
+                <h1 style="color: green;">Detalle empleado</h1>
+                <b>{{ empleado.first_name }} {{ empleado.last_name }}</b>
+            </div>
+        </div>
+        <br>
+        <div class="grid-x align-center">
+            <div class="cell medium-4">
+                <div class="card">
+                    {% if empleado.image %}
+                        <div class="grid-x card-divider">
+                            <div class="auto">
+                                <img src="{{ empleado.image.url }}" alt="avatar">
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="grid-x card-divider">
+                            <div class="auto">
+                                <img src="{% static 'img/icon.png' %}" alt="avatar">
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="grid-x card-section">
+                        <b class="cell large-4">Cargo:&nbsp;</b> <div class="large-8">{{ empleado.get_job_display|title }}</div>
+                    </div>
+                    <div class="grid-x card-divider">
+                        <b class="cell large-4">Área:&nbsp;</b> <div class="large-8">{{ empleado.department.name|title }}</div>
+                    </div>
+                    <div class="grid-x card-section">
+                        <b class="cell large-4">Habilidades:</b>
+                        <ul class="cell large-7 inline-list">
+                            {% for ability in empleado.abilities.all%}
+                                <li>{{ ability.ability }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+<p>Habilidades</p>
+
+
+
+

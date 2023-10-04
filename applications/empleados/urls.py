@@ -1,0 +1,60 @@
+from django.urls import path
+from . import views
+app_name = 'empleados_app'
+urlpatterns = [
+    path(
+        '',
+        views.InicioView.as_view(),
+        name='home'
+    ),
+    path('listar-empleados/',
+        views.ListAllEmpleados.as_view(),
+        name='empleados_all'
+    ),
+    path('listar-by-areas/<id>/',
+        views.ListByAreaEmpleado.as_view(),
+        name='empleados_area'
+    ),
+    path('listar-empleados-admin/',
+        views.ListEmpleadosAdmin.as_view(),
+        name='empleados_admin'
+    ),
+    path('listar-by-jobs/<id>/',
+        views.ListByJobEmpleado.as_view()
+    ),
+    path('buscar-empleado/',
+        views.ListEmpleadosByKword.as_view()
+    ),
+    path('select-empleado/',
+        views.SelectEmpleadoView.as_view(),
+        name='select_empleado'
+    ),
+    path('list-abilities/',
+        views.ListAbilitiesEmpleadoView.as_view(),
+        name='list_abilities'
+    ),
+    path('ver-empleado/<pk>/',
+        views.empleadoDetailView.as_view(),
+        name='empleado_detail'
+    ),
+    path(
+        'add-empleado/',
+        views.EmpleadoCreateView.as_view(),
+        name='add_new'
+    ),
+    path(
+        'success/',
+        views.SuccessView.as_view(),
+        name='correcto'
+    ),
+    path(
+        'update/<pk>/',
+        views.EmpleadoUpdateView.as_view(),
+        name='modificar_empleado'
+    ),
+    path(
+        'delete/<pk>/',
+        views.EmpleadoDeleteView.as_view(),
+        name='eliminar_empleado'
+    ),
+]

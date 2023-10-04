@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block titulo %} Editar empleado {% endblock titulo %}
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x" style="text-align: center;">
+            <h1 class="cell">Modificar datos empleado</h1>
+            <div class="cell ">
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="grid-x grid-padding-x align-center">
+                      <div class="small-2 cell">
+                        <label class="text-right middle"><strong>Nombre</strong></label>
+                      </div>
+                      <div class="small-4 cell">
+                        {{ form.first_name }}
+                      </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Apellido</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Cargo</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.job }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Departamento</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.department }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Avatar</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.image }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Habilidades</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.abilities }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="cell small-2">
+                          <label class="text-right middle"><strong>Hoja de vida</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.cv }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <input type="submit" class="button" value="Actualizar">
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

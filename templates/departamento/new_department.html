@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block titulo %} Registrar departamento {% endblock titulo %}
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x" style="text-align: center;">
+            <h1 class="cell">Registrar nuevo departamento</h1>
+            <div class="cell callout">
+                <form method="POST" class="callout">{% csrf_token %}
+                    <h3 class="cell">Datos empleado</h3>
+                    <div class="grid-x grid-padding-x align-center">
+                      <div class="small-2 cell">
+                        <label class="text-right middle"><strong>Nombre</strong></label>
+                      </div>
+                      <div class="small-4 cell">
+                        {{ form.first_name }}
+                      </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Apellido</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.last_name }}
+                        </div>
+                    </div>
+                    <h3 class="cell">Datos departamento</h3>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Departamento</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.department }}
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x align-center">
+                        <div class="small-2 cell">
+                          <label class="text-right middle"><strong>Nombre corto-Departamento</strong></label>
+                        </div>
+                        <div class="small-4 cell">
+                          {{ form.shorname }}
+                        </div>
+                    </div>
+                    
+                    <div class="grid-x grid-padding-x align-center">
+                        <input type="submit" class="button" value="Registrar">
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

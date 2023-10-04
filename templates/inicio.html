@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}Sistema empelados{% endblock titulo %}
+{% block content %} 
+    {% include 'includes/header.html' %}
+    <!-- Inicio imagenes portada -->
+    <div style="height: 90vh !important;" class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit >
+        <div class="orbit-wrapper">
+            <div class="orbit-controls">
+                <button class="orbit-previous"><span class="show-for-sr">Anterior</span>&#9664;&#xFE0E;</button>
+                <button class="orbit-next"><span class="show-for-sr">Siguiente</span>&#9654;&#xFE0E;</button>
+            </div>
+            <ul class="orbit-container">
+                <li class="is-active orbit-slide">
+                <figure class="orbit-figure" style="height: 90vh;">
+                    <img class="orbit-image" src="{% static 'img/fondo_user1.jpeg' %}" alt="Space" style="margin-top: -20%;">
+                    <figcaption class="orbit-caption">Tú tienes el control.</figcaption>
+                </figure>
+                </li>
+                <li class="orbit-slide">
+                <figure class="orbit-figure" style="height: 90vh;">
+                    <img class="orbit-image" src="{% static 'img/fondo_user2.jpeg' %}" alt="Space" style="margin-top: -35%;">
+                    <figcaption class="orbit-caption">Administra con inteligencia.</figcaption>
+                </figure>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Fin imagenes portada -->
+    <br>
+    <!-- Inicio bloque de bienvenida -->
+    <div class="grid-x align-center">
+        <h1 class="cell large-12" style="font-size: 30px; text-align: center;">Bienvenido al sistema de registro de empleados</h1>
+        <div class="cell large-7">
+            <div class="callout success">
+                <h5>Registro y control de empleados</h5>
+                <p>Sistema de control de personal empresarial, mediante cargos y departamentos.</p>
+                <a href="#">Ver empleados</a>
+              </div>
+        </div>
+    </div>
+    <!-- Fin bloque de bienvenida -->
+{% endblock content %}
