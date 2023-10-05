@@ -2,7 +2,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-18-220-180-235.us-east-2.compute.amazonaws.com','18.220.180.235']
 
 DATABASES = {
     'default': {
